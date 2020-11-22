@@ -4,9 +4,7 @@
   "description": "a boilerplate from scratch for webpack with webpack, elint, prettier, airbnb, sass and loader",
   "main": "App.js",
   "scripts": {
-    "start": "webpack --mode=development",
-    "build": "webpack --mode=production",
-    "dev-server": "webpack-dev-server"
+    "start": "webpack serve --hot --inline"
   },
   "repository": {
     "type": "git",
@@ -45,6 +43,7 @@
     "eslint": "^7.14.0",
     "eslint-plugin-react": "^7.21.5",
     "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^4.5.0",
     "node-sass": "^5.0.0",
     "prettier": "2.2.0",
     "sass": "^1.29.0",

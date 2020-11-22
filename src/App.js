@@ -7,7 +7,8 @@ const App = () => {
   return (
     <div className="main">
       <img className="logo" src={Logo} />
-      <h2 className="subtitle">Hello World!</h2>
+      <h2 className="title">Hello World!</h2>
+      <p className="subtitle">This is a ReactJS boilerplate</p>
     </div>
   )
 }

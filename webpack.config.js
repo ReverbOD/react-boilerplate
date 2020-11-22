@@ -1,7 +1,8 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/app.js',
+  entry: './src/App.js',
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -30,10 +31,14 @@ module.exports = {
     }
     ]
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "React App",
+      template: './public/index.html'
+  })
+  ],
   devtool: 'eval-cheap-module-source-map',
   devServer: {
-    contentBase: path.join(__dirname, 'public'),
-    compress: true,
     port: 3000
   }
 }
