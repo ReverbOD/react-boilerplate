@@ -17,6 +17,4 @@ I've used:
 * 3- Build your own app!
   
 ## Command:
-* `$ npm start` for building in dev mode
-* `$ npm build` for building in production mode
-* `$ npm dev-server` launch the dev server
+* `$ npm run start` launch the dev server
