@@ -12,11 +12,9 @@ I've used:
 * [Sass](https://sass-lang.com/) - the most mature, stable, and powerful professional grade CSS extension language in the world (CSS with superpower :wink:).
 
 ## How to use:
-1- Clone this repo: `$ git clone https://github.com/ReverbOD/react-webpack.git`
-<p align="center"><img width="600" height="200" src="./cloning.gif"></p>
-2- Install all the dependencies: `$ npm i`
-<p align="center"><img width="600" height="200" src="./install.gif"></p
-3- Build your own app!
+* 1- Clone this repo: `$ git clone https://github.com/ReverbOD/react-webpack.git`
+* 2- Install all the dependencies: `$ npm i`
+* 3- Build your own app!
   
 ## Command:
 * `$ npm start` for building in dev mode
