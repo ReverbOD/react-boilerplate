@@ -13,13 +13,21 @@ body{
 }
 
 .logo {
-  height: 300px;
-  width: 800px;
+  height: 400px;
+  width: 400px;
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 40%;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 4s linear infinite;
 }
+
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 .title {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
