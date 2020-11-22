@@ -1,0 +1,57 @@
+{
+  "name": "react-webpack",
+  "version": "1.0.0",
+  "description": "a boilerplate from scratch for webpack with webpack, elint, prettier, airbnb, sass and loader",
+  "main": "App.js",
+  "scripts": {
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
+    "dev-server": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ReverbOD/react-webpack.git"
+  },
+  "keywords": [
+    "javascript",
+    "react",
+    "webpack",
+    "eslint",
+    "prettier",
+    "airbnb",
+    "sass",
+    "scss",
+    "css",
+    "react",
+    "react-dom",
+    "dom"
+  ],
+  "author": "Giuseppe Gigliotti",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ReverbOD/react-webpack/issues"
+  },
+  "homepage": "https://github.com/ReverbOD/react-webpack#readme",
+  "dependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.7",
+    "@babel/preset-env": "^7.12.7",
+    "@babel/preset-react": "^7.12.7",
+    "babel-loader": "^8.2.1",
+    "css-loader": "^5.0.1",
+    "eslint": "^7.14.0",
+    "eslint-plugin-react": "^7.21.5",
+    "file-loader": "^6.2.0",
+    "node-sass": "^5.0.0",
+    "prettier": "2.2.0",
+    "sass": "^1.29.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
