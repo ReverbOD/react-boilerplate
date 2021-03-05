@@ -1,57 +1,77 @@
 {
-  "name": "react-webpack",
+  "name": "tailwind-react",
   "version": "1.0.0",
-  "description": "a boilerplate from scratch for webpack with webpack, elint, prettier, airbnb, sass and loader",
+  "description": "boilerplate with react loaded up with tailwind.css",
   "main": "App.js",
   "scripts": {
-    "prod": "webpack --mode production",
-    "start": "webpack serve --hot --inline"
+    "start": "webpack serve --config config/webpack.dev.js",
+    "build": "NODE_ENV=production webpack --config config/webpack.prod.js",
+    "build-staging": "NODE_ENV=production webpack --config config/webpack.stag.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ReverbOD/react-webpack.git"
+    "url": "git+https://github.com/reverb6821/react-boilerplate.git"
   },
   "keywords": [
-    "javascript",
     "react",
+    "reactjs",
     "webpack",
-    "eslint",
-    "prettier",
-    "airbnb",
-    "sass",
-    "scss",
-    "css",
-    "react",
-    "react-dom",
-    "dom"
+    "boilerplate"
   ],
   "author": "Giuseppe Gigliotti",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ReverbOD/react-webpack/issues"
+    "url": "https://github.com/reverb6821/react-boilerplate/issues"
   },
-  "homepage": "https://github.com/ReverbOD/react-webpack#readme",
-  "dependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
+  "homepage": "https://github.com/reverb6821/react-boilerplate#readme",
   "devDependencies": {
-    "@babel/core": "^7.12.7",
-    "@babel/preset-env": "^7.12.7",
-    "@babel/preset-react": "^7.12.7",
-    "babel-loader": "^8.2.1",
-    "css-loader": "^5.0.1",
-    "eslint": "^7.14.0",
-    "eslint-plugin-react": "^7.21.5",
-    "file-loader": "^6.2.0",
-    "html-webpack-plugin": "^5.0.0-alpha.6",
+    "@babel/core": "^7.13.8",
+    "@babel/eslint-plugin": "^7.13.0",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/preset-env": "^7.13.9",
+    "@babel/preset-react": "^7.12.13",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.4.3",
+    "@svgr/webpack": "^5.5.0",
+    "autoprefixer": "^10.2.4",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.0.0",
+    "css-loader": "^5.1.1",
+    "css-minimizer-webpack-plugin": "^1.2.0",
+    "dotenv-webpack": "^6.0.4",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "html-webpack-plugin": "^5.2.0",
+    "mini-css-extract-plugin": "^1.3.9",
     "node-sass": "^5.0.0",
-    "prettier": "2.2.0",
-    "sass": "^1.29.0",
-    "sass-loader": "^10.1.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.4",
+    "postcss": "^8.2.7",
+    "postcss-import": "^14.0.0",
+    "postcss-loader": "^5.0.0",
+    "prettier": "2.2.1",
+    "react-refresh": "^0.9.0",
+    "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
-    "webpack": "^5.6.0",
-    "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0"
+    "terser-webpack-plugin": "^5.1.1",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
+  },
+  "dependencies": {
+    "fsevents": "^2.3.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "tailwindcss": "^2.0.3"
+  },
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
   }
 }

@@ -53,12 +53,14 @@
  * @property {(string | ExportSpec)[]=} exports nested exports
  * @property {ModuleGraphConnection=} from when reexported: from which module
  * @property {string[] | null=} export when reexported: from which export
+ * @property {boolean=} hidden export is not visible, because another export blends over it
  */
 
 /**
  * @typedef {Object} ExportsSpec
  * @property {(string | ExportSpec)[] | true | null} exports exported names, true for unknown exports or null for no exports
  * @property {Set<string>=} excludeExports when exports = true, list of unaffected exports
+ * @property {Set<string>=} hideExports list of maybe prior exposed, but now hidden exports
  * @property {ModuleGraphConnection=} from when reexported: from which module
  * @property {boolean=} canMangle can the export be renamed (defaults to true)
  * @property {boolean=} terminalBinding are the exports terminal bindings that should be checked for export star conflicts
@@ -128,7 +130,7 @@ class Dependency {
 
 	/**
 	 * @param {ModuleGraph} moduleGraph module graph
-	 * @returns {function(ModuleGraphConnection, RuntimeSpec): ConnectionState} function to determine if the connection is active
+	 * @returns {null | false | function(ModuleGraphConnection, RuntimeSpec): ConnectionState} function to determine if the connection is active
 	 */
 	getCondition(moduleGraph) {
 		return null;
@@ -167,13 +169,7 @@ class Dependency {
 	 * @param {UpdateHashContext} context context
 	 * @returns {void}
 	 */
-	updateHash(hash, context) {
-		const { chunkGraph } = context;
-		const module = chunkGraph.moduleGraph.getModule(this);
-		if (module) {
-			hash.update(chunkGraph.getModuleId(module) + "");
-		}
-	}
+	updateHash(hash, context) {}
 
 	/**
 	 * implement this method to allow the occurrence order plugin to count correctly

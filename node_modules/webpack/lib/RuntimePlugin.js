@@ -8,6 +8,7 @@
 const RuntimeGlobals = require("./RuntimeGlobals");
 const RuntimeRequirementsDependency = require("./dependencies/RuntimeRequirementsDependency");
 const JavascriptModulesPlugin = require("./javascript/JavascriptModulesPlugin");
+const AsyncModuleRuntimeModule = require("./runtime/AsyncModuleRuntimeModule");
 const AutoPublicPathRuntimeModule = require("./runtime/AutoPublicPathRuntimeModule");
 const CompatGetDefaultExportRuntimeModule = require("./runtime/CompatGetDefaultExportRuntimeModule");
 const CompatRuntimeModule = require("./runtime/CompatRuntimeModule");
@@ -21,6 +22,7 @@ const HasOwnPropertyRuntimeModule = require("./runtime/HasOwnPropertyRuntimeModu
 const LoadScriptRuntimeModule = require("./runtime/LoadScriptRuntimeModule");
 const MakeNamespaceObjectRuntimeModule = require("./runtime/MakeNamespaceObjectRuntimeModule");
 const PublicPathRuntimeModule = require("./runtime/PublicPathRuntimeModule");
+const RelativeUrlRuntimeModule = require("./runtime/RelativeUrlRuntimeModule");
 const RuntimeIdRuntimeModule = require("./runtime/RuntimeIdRuntimeModule");
 const SystemContextRuntimeModule = require("./runtime/SystemContextRuntimeModule");
 const ShareRuntimeModule = require("./sharing/ShareRuntimeModule");
@@ -46,13 +48,17 @@ const GLOBALS_ON_REQUIRE = [
 	RuntimeGlobals.moduleFactoriesAddOnly,
 	RuntimeGlobals.interceptModuleExecution,
 	RuntimeGlobals.publicPath,
+	RuntimeGlobals.baseURI,
+	RuntimeGlobals.relativeUrl,
 	RuntimeGlobals.scriptNonce,
 	RuntimeGlobals.uncaughtErrorHandler,
+	RuntimeGlobals.asyncModule,
 	RuntimeGlobals.wasmInstances,
 	RuntimeGlobals.instantiateWasm,
 	RuntimeGlobals.shareScopeMap,
 	RuntimeGlobals.initializeSharing,
-	RuntimeGlobals.loadScript
+	RuntimeGlobals.loadScript,
+	RuntimeGlobals.systemContext
 ];
 
 const MODULE_DEPENDENCIES = {
@@ -195,6 +201,12 @@ class RuntimePlugin {
 					return true;
 				});
 			compilation.hooks.runtimeRequirementInTree
+				.for(RuntimeGlobals.asyncModule)
+				.tap("RuntimePlugin", chunk => {
+					compilation.addRuntimeModule(chunk, new AsyncModuleRuntimeModule());
+					return true;
+				});
+			compilation.hooks.runtimeRequirementInTree
 				.for(RuntimeGlobals.systemContext)
 				.tap("RuntimePlugin", chunk => {
 					if (compilation.outputOptions.library.type === "system") {
@@ -301,6 +313,12 @@ class RuntimePlugin {
 				.for(RuntimeGlobals.loadScript)
 				.tap("RuntimePlugin", (chunk, set) => {
 					compilation.addRuntimeModule(chunk, new LoadScriptRuntimeModule());
+					return true;
+				});
+			compilation.hooks.runtimeRequirementInTree
+				.for(RuntimeGlobals.relativeUrl)
+				.tap("RuntimePlugin", (chunk, set) => {
+					compilation.addRuntimeModule(chunk, new RelativeUrlRuntimeModule());
 					return true;
 				});
 			// TODO webpack 6: remove CompatRuntimeModule
