@@ -11,6 +11,11 @@ I've used:
 * [Airbnb](https://airbnb.io/javascript/react/)  A JSX style guide.
 * [Sass](https://sass-lang.com/) - the most mature, stable, and powerful professional grade CSS extension language in the world (CSS with superpower :wink:).
 
+## Branches:
+There are various branch, configured to work with css framework. Just switch to get your favourite.
+* [Tailwind css](https://tailwindcss.com/)
+* [Bootstrap 5](https://getbootstrap.com/) - (Coming Soon)
+
 ## How to use:
 * 1- Clone this repo: `$ git clone https://github.com/ReverbOD/react-webpack.git`
 * 2- Install all the dependencies: `$ npm i`
